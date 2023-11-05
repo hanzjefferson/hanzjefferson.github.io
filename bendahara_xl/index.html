@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Website Bendahara - Kelas X-L</title>
+  
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
+  <script defer src="bootstrap/js/bootstrap.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <link href="style.css" rel="stylesheet">
+
+  <script src="utils.js"></script>
+</head>
+<body class="h-100">
+  <nav class="navbar bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-medium" href="#">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <hr class="m-0">
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Daftar Siswa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Jurnal Kas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Catatan Keuangan</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="d-flex flex-column gap-2 p-3">
+  <h4 class="m-0">Statistik</h4>
+  <div class="d-flex auto-column gap-2">
+    <div style="flex: 1 1 20%;">
+      <div id="totalCard" class="card">
+        <div class="card-body">
+          <p class="card-title fs-6 fw-medium m-0">Total Kas : </p>
+          <h4 id="totalCash" class="card-text m-0">Rp. 0</h4>
+          <p class="card-text mb-1"><small class="text-info">(Dikurangi Pengeluaran)</small></p>
+          <p class="card-title fs-6 fw-medium m-0">Total Pengeluaran : </p>
+          <h4 id="expanseTotal" class="card-text m-0">Rp. 0</h4>
+        </div>
+        <div class="card-footer text-truncate">
+          <small class="text-body-secondary">Last Update: November 3, 2023</small>
+        </div>
+      </div>
+    </div>
+
+    <div id="ioCard" class="card flex-fill">
+      <div class="card-body">
+        <p class="card-title fs-6 fw-medium m-0">Pemasukan & Pengeluaran Bulanan : </p>
+        <div class="chart-container">
+          <canvas id="ioChart"></canvas>
+        </div>
+      </div>
+      <div class="card-footer text-truncate">
+        <small class="text-body-secondary">Last Update: November 3, 2023</small>
+      </div>
+    </div>
+
+    <div id="percentageCard" class="card flex-fill">
+      <div class="card-body">
+        <p class="card-title fs-6 fw-medium m-0">Persentase Siswa : </p>
+        <div class="chart-container">
+          <canvas id="percentageChart"></canvas>
+        </div>
+      </div>
+      <div class="card-footer text-truncate">
+        <small class="text-body-secondary">Last Update: November 3, 2023</small>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h4 class="m-0">Leaderboard</h4>
+  <table id="leaderboard" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Absen</th>
+        <th scope="col">Nama</th>
+        <th scope="col">Kas</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+</div>
+
+<script>
+  getCashLog().then(logs => {
+    const data = logs.data;
+    const lastUpdate = new Date(logs.last_update * 1000);
+    document.getElementById("totalCard").getElementsByClassName("card-footer")[0].innerHTML = `<small class="text-body-secondary">Last Update: ${getMonthName(lastUpdate.getMonth())} ${lastUpdate.getDay()}, ${lastUpdate.getFullYear()}</small>`;
+    document.getElementById("ioCard").getElementsByClassName("card-footer")[0].innerHTML = `<small class="text-body-secondary">Last Update: ${getMonthName(lastUpdate.getMonth())} ${lastUpdate.getDay()}, ${lastUpdate.getFullYear()}</small>`;
+
+    let total = 0, expanseTotal = 0;
+    let date = new Date();
+    let months = [];
+    for (let i in data){
+      if (data[i].type == "expanse"){
+        total -= data[i].amount;
+        expanseTotal += data[i].amount;
+      } else total += data[i].amount;
+      if (data[i].date != null){
+        let logDate = new Date(data[i].date * 1000);
+        if (logDate.getFullYear() != date.getFullYear()) continue;
+        else if (!months.includes(logDate.getMonth())) months.push(logDate.getMonth());
+      } else continue;
+    }
+    document.getElementById("totalCash").innerHTML = formatRupiah(total);
+    document.getElementById("expanseTotal").innerHTML = formatRupiah(expanseTotal);
+
+    if (Math.min(...months)-1 >= 0) months.push(Math.min(...months)-1);
+    months.sort((a, b) => a - b);
+
+    let labels = getMonthNames(months[0], months[months.length-1]);
+    for (let i in labels){
+      labels[i] = labels[i] + " " + date.getFullYear();
+    }
+
+    let expanseDataSets = [], incomeDataSets = [];
+    for (let i in months){
+      filteredData = data.filter((log) => {
+        if (log.date != null){
+            let logDate = new Date(log.date * 1000);
+            if (logDate.getFullYear() != date.getFullYear()) return false;
+            if (logDate.getMonth() != months[i]) return false;
+            return true;
+        } else return false;
+      })
+      let expanse = 0, income = 0;
+      for (const a of filteredData){
+        if (a.amount != null){
+          if (a.type == "expanse") expanse += a.amount;
+          else if (a.type == "income") income += a.amount;
+        }else continue;
+      }
+      expanseDataSets.push(expanse);
+      incomeDataSets.push(income);
+    }
+
+    new Chart("ioChart", {
+      "type": "line",
+      "data": {
+        "labels": labels,
+        "datasets": [
+        {
+            "label": "Pemasukan",
+            "data": incomeDataSets,
+            "fill": false,
+            "borderColor": "rgb(144, 238, 144)"
+          },
+          {
+            "label": "Pengeluaran",
+            "data": expanseDataSets,
+            "fill": false,
+            "borderColor": "rgb(255, 99, 132)"
+          }
+        ]
+      },
+      "options": {
+        "maintainAspectRatio": false,
+        "scales": {
+            "yAxes": [{
+                "ticks": {
+                    "callback": function(value, index, ticks) {
+                        return value/1000+"k";
+                    }
+                }
+            }]
+        },
+        "tooltips": {
+          "callbacks": {
+            "label": function(tooltipItem, data) {
+              return data.datasets[tooltipItem.datasetIndex].label + ": " + formatRupiah(tooltipItem.yLabel);
+            }
+          }
+        }
+      }
+    });
+  });
+
+  getJournal().then(journal => {
+    const data = journal.data;
+    const lastUpdate = new Date(journal.last_update * 1000);
+    document.getElementById("percentageCard").getElementsByClassName("card-footer")[0].innerHTML = `<small class="text-body-secondary">Last Update: ${getMonthName(lastUpdate.getMonth())} ${lastUpdate.getDay()}, ${lastUpdate.getFullYear()}</small>`;
+
+    let noCash = [], lazy = [], normal = [], diligent = [];
+    let overDate = 0;
+    for (let i = data.length-1; i >= 0; i--) {
+      if (i == 0) {
+        noCash = data[i].up_to_here;
+        continue;
+      }
+      if (i > 0 && data[i].date == null){
+        diligent.push(...data[i].up_to_here);
+        overDate++;
+        continue;
+      }
+      if (i > 0 && i < Math.floor((data.length-overDate)/2)) {
+        lazy.push(...data[i].up_to_here);
+        continue;
+      }
+      normal.push(...data[i].up_to_here);
+    }
+
+    new Chart("percentageChart",{
+      "type": "pie",
+      "data": {
+        "labels": [
+          'No Cash',
+          'Lazy',
+          'Normal',
+          'Diligent'
+        ],
+        "datasets": [{
+          "data": [noCash.length, lazy.length, normal.length, diligent.length],
+          "backgroundColor": [
+            'rgb(100, 100, 100)',
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+        ]
+        },
+      ]
+      },
+      "options": {
+        "maintainAspectRatio": false
+      }
+    });
+
+    const leaderboard = diligent.concat(normal, lazy, noCash);
+    getStudentList().then((students) => {
+      for (let i = 0; i < leaderboard.length; i++){
+        const num = parseInt(i)+1;
+        const cashCount = data.findLastIndex((log) => log.up_to_here.includes(leaderboard[i]));
+        let name = students.find((student) => student.id == leaderboard[i])
+        if (name == undefined) name = "Tidak ditemukan";
+        else name = name.full_name;
+        document.getElementById("leaderboard").getElementsByTagName("tbody")[0].innerHTML += `<tr><th scope="row">${num}</th><td>${leaderboard[i]}</td><td>${name}</td><td>${cashCount} kali</td></tr>`;
+      }
+    });
+  });
+    
+  
+  async function getJournal(){
+    const journal = await fetch('cash_journal.json').then(res => res.json());
+    return journal;
+  }
+
+  async function getCashLog(){
+    const log = await fetch('cash_log.json').then(res => res.json());
+    return log;
+  }
+
+  async function getStudentList(){
+    const student = await fetch('student_list.json').then(res => res.json());
+    return student;
+  }
+
+</script>
+</body>
+</html>
