@@ -265,17 +265,17 @@
     
   
   async function getJournal(){
-    const journal = await fetch('cash_journal.json').then(res => res.json());
+    const journal = await fetch('db/cash_journal.json').then(res => res.json());
     return journal;
   }
 
   async function getCashLog(){
-    const log = await fetch('cash_log.json').then(res => res.json());
+    const log = await fetch('db/cash_log.json').then(res => res.json());
     return log;
   }
 
   async function getStudentList(){
-    const student = await fetch('student_list.json').then(res => res.json());
+    const student = await fetch('db/student_list.json').then(res => res.json());
     return student;
   }
 
