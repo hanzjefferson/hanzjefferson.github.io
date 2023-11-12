@@ -1,0 +1,392 @@
+[
+  {
+    "id": 1,
+    "full_name": "Agha Farisa Asytar Wina",
+    "nick_name": "Agha",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 2,
+    "full_name": "Ahmad Danis Al Farizi",
+    "nick_name": "Danis",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 3,
+    "full_name": "Alfin Hidayat",
+    "nick_name": "Alfin",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 4,
+    "full_name": "Asnafi Taufikh Ayatullah",
+    "nick_name": "Asnafi",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 5,
+    "full_name": "Azka Luthvi Saputra",
+    "nick_name": "Azka",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 6,
+    "full_name": "Faro'idul Ahsan",
+    "nick_name": "Ro'id",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 7,
+    "full_name": "Farrel Rhesa Andi Pradana",
+    "nick_name": "Farrel",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 8,
+    "full_name": "Haikal Ferdiansyah",
+    "nick_name": "Haikal",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 9,
+    "full_name": "Muhammad Abdullah Khoiron",
+    "nick_name": "Iyon",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 10,
+    "full_name": "Muhammad Aghis Nazarrul Sidik",
+    "nick_name": "Aghis",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 11,
+    "full_name": "Muhammad Fauki Kurniawan",
+    "nick_name": "Fauki",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 12,
+    "full_name": "Muhammad Hirzul Muaffa'",
+    "nick_name": "Hirzul",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 13,
+    "full_name": "Muhammad Lutfi Izam Yahya",
+    "nick_name": "Izam",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 14,
+    "full_name": "Muhammad Rakha Yafi Nabiha",
+    "nick_name": "Rakha",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 15,
+    "full_name": "Melandri Hermansyah",
+    "nick_name": "Andri",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 16,
+    "full_name": "Mochamad Wildan Khoirul Anwar",
+    "nick_name": "Wildan",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 17,
+    "full_name": "Mohamad Farda Syeif Fandy",
+    "nick_name": "Farda",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 18,
+    "full_name": "Mohamad Nauval Fikri Amrullah",
+    "nick_name": "Nauval",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 19,
+    "full_name": "Mohamad Amirul Fadil",
+    "nick_name": "Fadil",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 20,
+    "full_name": "Mohamad Wahyu Romdhoni ",
+    "nick_name": "Wahyu",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 21,
+    "full_name": "Mohammad Zidhan Al Hariri",
+    "nick_name": "Zidhan, Hari",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 22,
+    "full_name": "Muhamad Rizqi Al Hattani",
+    "nick_name": "Hattan",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 23,
+    "full_name": "Muhamad Syifa'udin Azzam Zammi",
+    "nick_name": "Syifa', Azzam",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 24,
+    "full_name": "Muhammad Abdul Fathir",
+    "nick_name": "Fathir",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 25,
+    "full_name": "Muhammad Akmal Amirudin",
+    "nick_name": "Akmal",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 26,
+    "full_name": "Muhammad Alfan Rizki Abdillah",
+    "nick_name": "Alfan",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 27,
+    "full_name": "Muhammad Farel Ihsanudin",
+    "nick_name": "Farel, Ihsan",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 28,
+    "full_name": "Muhammad Farhan Mubarok",
+    "nick_name": "Farhan",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 29,
+    "full_name": "Muhammad Faris Habibulloh",
+    "nick_name": "Faris",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 30,
+    "full_name": "Muhammad Fausta Ramzi",
+    "nick_name": "Fausta, Ramzi",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 31,
+    "full_name": "Muhammad Ilham Muzakki",
+    "nick_name": "Ilham, Muzakki",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 32,
+    "full_name": "Muhammad Janky Dawsat",
+    "nick_name": "Janky",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 33,
+    "full_name": "Muhammad Reza Syahlevy",
+    "nick_name": "Reza",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 34,
+    "full_name": "Muhammad Ubaydillah",
+    "nick_name": "Ubay",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 35,
+    "full_name": "Natan Audrey Bachtiar",
+    "nick_name": "Natan",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 36,
+    "full_name": "Regan Maulana Al Saroji",
+    "nick_name": "Regan",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 37,
+    "full_name": "Wildan Fahmi Maulid Dani",
+    "nick_name": "Wildan, Fahmi, Sumeh",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 38,
+    "full_name": "Zulfikar Dwi Saputro",
+    "nick_name": "Zulfikar",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  },
+  {
+    "id": 39,
+    "full_name": "Muhammad Davi Hassib",
+    "nick_name": "Davi",
+    "address": null,
+    "hobby": null,
+    "departement": null,
+    "age": null,
+    "info": null
+  }
+]

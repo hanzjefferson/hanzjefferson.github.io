@@ -1,0 +1,26 @@
+{
+  "last_update": 1699290000,
+  "data": [
+    {
+      "info": "Kas Agustus - November",
+      "details": null,
+      "type": "income",
+      "date": 1698771600,
+      "amount": 538000
+    },
+    {
+      "info": "Pengeluaran Agustus - November",
+      "details": "2 Spidol = Rp. 16.000\nSpidol = Rp. 7.000\nPenghapus Whiteboard = Rp. 9.000\nSpidol, Isi Spidol = Rp. 24.000\n2 Spidol = Rp. 14.000\n2 Spidol, Isi Spidol, Penghapus Whiteboard = Rp. 37.000\nFotocopy (Tugas Geografi) = Rp. 10.000\nJam = Rp. 30.000\n2 Spidol = Rp. 14.000\nTotal = Rp. 171.000",
+      "type": "expanse",
+      "date": 1698771600,
+      "amount": 246000
+    },
+    {
+      "info": "2 Spidol",
+      "details": "Spidol e amen ilang ae 🗿",
+      "type": "expanse",
+      "date": 1699290000,
+      "amount": 16000
+    }
+  ]
+}
