@@ -21,6 +21,13 @@
       "type": "expanse",
       "date": 1699290000,
       "amount": 16000
+    },
+    {
+      "info": "2 Sapu, 1 Cikrak",
+      "details": null,
+      "type": "expanse",
+      "date": 1699894800,
+      "amount": 40000
     }
   ]
 }
