@@ -1,5 +1,5 @@
 {
-  "last_update": 1699290000,
+  "last_update": 1700845200,
   "data": [
     {
       "info": "Kas Agustus - November",
@@ -28,6 +28,34 @@
       "type": "expanse",
       "date": 1699894800,
       "amount": 40000
+    },
+    {
+      "info": "Fotocopy Kisi - kisi",
+      "details": null,
+      "type": "expanse",
+      "date": 1700586000,
+      "amount": 10000
+    },
+    {
+      "info": "Isi Spidol",
+      "details": null,
+      "type": "expanse",
+      "date": 1700586000,
+      "amount": 18000
+    },
+    {
+      "info": "Fotocopy Kisi - kisi",
+      "details": null,
+      "type": "expanse",
+      "date": 1700672400,
+      "amount": 10000
+    },
+    {
+      "info": "Fotocopy Kisi - kisi",
+      "details": null,
+      "type": "expanse",
+      "date": 1700758800,
+      "amount": 20000
     }
   ]
 }
