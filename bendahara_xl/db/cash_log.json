@@ -2,7 +2,7 @@
   "last_update": 1700845200,
   "data": [
     {
-      "info": "Kas Agustus - November",
+      "info": "Kas Agustus - November Awal",
       "details": null,
       "type": "income",
       "date": 1698771600,
@@ -56,6 +56,13 @@
       "type": "expanse",
       "date": 1700758800,
       "amount": 20000
+    }
+    {
+      "info": "Kas November",
+      "details": null,
+      "type": "income",
+      "date": 1700845200,
+      "amount": 100000
     }
   ]
 }
