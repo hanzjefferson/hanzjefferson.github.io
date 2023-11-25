@@ -126,7 +126,7 @@
 
 <script>
 
-  window.onload = () => {
+  document.addEventListener("DOMContentLoaded", (event) => {
     getAnnouncements().then(announcements => {
       if (announcements.length > 0){
         let index = 0;
@@ -183,7 +183,7 @@
         new bootstrap.Modal(document.getElementById("announcementModal")).show();
       }
     });
-  }
+  });
   getCashLog().then(logs => {
     const data = logs.data;
     const lastUpdate = new Date(logs.last_update * 1000);
