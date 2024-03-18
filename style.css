@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Truculenta:opsz,wght@12..72,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --nav-height: 60px;
+
+    --hero-avatar-size: 140px;
+
+    --card-bg: #f5f5f5;
+    --card-radius: 10px;
+
+    --col-primary: #6a89cc;
+    --col-secondary: #e55039;
+}
+
+.col-primary {
+    color: var(--col-primary) !important;
+}
+
+.col-secondary {
+    color: var(--col-secondary) !important;
+}
+
+.col-white{
+    color:white !important;
+}
+
+.col-black{
+    color: black !important;
+}
+
+.bg-primary {
+    background-color: var(--col-primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--col-secondary) !important;
+}
+
+.bg-white {
+    background-color: white !important;
+}
+
+.bg-black{
+    background-color: black !important;
+}
+
+.divider::after {
+    content: '';
+    height: 4px;
+    width: 50px;
+    position: absolute;
+    left: 50%;
+    bottom: -50px;
+    transform: translate(-50%);
+    border-radius: 20px;
+    background-color: black;
+
+}
+
+.avatar {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar img{
+    height: 100%;
+    width: 100%;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px;
+    background-color: var(--card-bg);
+    border-radius: var(--card-radius);
+}
+
+.card img{
+    margin-bottom: 4px;
+}
+
+.card .card-title{
+    font-size: larger;
+    margin-bottom: 6px;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html, body{
+    font-family: "Truculenta", sans-serif;
+    font-size: large;
+    
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background-image: url('./images/background.jpg');
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+button, a.btn{
+    padding: 8px;
+    background-color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 8px;
+    color: black;
+    text-decoration: none;
+}
+
+button i.fa, a.btn > i.fa {
+    font-size: larger;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: var(--nav-height);
+    position: fixed;
+    z-index: 999;
+    transition: all .5s ease;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+nav ul li{
+    margin: 0 10px;
+}
+
+nav li a{
+    text-decoration: none;
+    font-size: large;
+    color: lightgray;
+    transition: color 0.25s ease;
+    position: relative;
+}
+
+nav a:hover{
+    color: white;
+}
+
+nav a.active{
+    color: white;
+}
+
+nav a::after{
+    content: "";
+    position: absolute;
+    background-color: white;
+    width: 0px;
+    height: 2px;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 20px;
+    bottom: -2px;
+    transition: width 0.2s ease;
+}
+
+nav a.active::after {
+    width: 25px;
+}
+
+main{
+    height: fit-content;
+}
+
+main > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    height: calc(100vh - var(--nav-height));
+    padding: 0 100px;
+}
+
+main > div .header{
+    padding: 14px;
+}
+
+main div#home{
+    backdrop-filter: blur(3px);
+    background-color: #12121270;
+    color: white;
+    padding-top: var(--nav-height) !important;
+    height: calc(100vh - var(--nav-height));
+    justify-content: center;
+    align-items: flex-start;
+
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+main div#home .avatar {
+    height: var(--hero-avatar-size);
+    width: var(--hero-avatar-size);
+    margin-bottom: 10px;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.377);
+}
+
+main div#home #hero-title{
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+}
+
+main div#home #hero-header {
+    margin-bottom: 18px;
+}
+
+main div#home #hero-header .Typewriter__wrapper {
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+    font-size: xxx-large;
+    color: var(--col-primary);
+}
+
+main div#home #hero-header .Typewriter__cursor {
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+    font-size: xxx-large;
+}
+
+main div#home #hero-subheader {
+    text-align: left;
+    width: 80%;
+    margin-bottom: 26px;
+}
+
+main div#skills .swiper{
+    height: 85%;
+    width: 100%;
+}
+
+.swiper .swipe-wrapper .swiper-slide{
+    height: 100%;
+    width: 100%;
+}
+
+main div#skills #slide-1.swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+main div#skills #slide-2.swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+    font-size: x-large;
+}
