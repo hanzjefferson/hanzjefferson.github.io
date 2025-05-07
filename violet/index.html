@@ -99,12 +99,14 @@
       `;
                 chat.appendChild(typingBubble);
                 chat.scrollTop = chat.scrollHeight;
+                input.setAttribute('disabled', '');
             }
 
             function removeTyping() {
                 if (typingBubble) {
                     chat.removeChild(typingBubble);
                     typingBubble = null;
+                    input.removeAttribute('disabled');
                 }
             }
 
