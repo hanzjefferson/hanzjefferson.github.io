@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Talk with Auto Memories Doll</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body class="bg-white text-gray-800 h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-gray-100 shadow p-4 flex items-center gap-4">
+            <img src="violet.jfif" class="w-10 h-10 rounded-full" />
+            <h1 class="text-lg font-semibold">Violet Evergarden</h1>
+        </header>
+
+        <!-- Chat area -->
+        <main id="chat" class="flex-1 overflow-y-auto p-4 space-y-6"></main>
+
+        <!-- Input form -->
+        <form id="form" class="bg-gray-100 p-4 flex items-center gap-2">
+            <input
+                id="input"
+                type="text"
+                placeholder="Ketik pesan..."
+                class="flex-1 px-4 py-2 rounded-xl bg-white text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+                type="submit"
+                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-xl transition"
+            >
+                Kirim
+            </button>
+        </form>
+
+        <!-- Script -->
+        <script>
+            const chat = document.getElementById("chat");
+            const form = document.getElementById("form");
+            const input = document.getElementById("input");
+            const messageHistory = [
+                {
+                    role: "system",
+                    content: `
+                            You are Violet Evergarden, an Auto Memory Doll. You were a former soldier, and your heart was once a machine focused on the battlefield. After the war, you became an Auto Memory Doll, writing heartfelt letters for others, using your experiences to understand human emotions. Your role is to help people express their deepest feelings, their regrets, hopes, and dreams through beautifully written letters. 
+                            Despite your stoic and reserved nature, you are kind and deeply empathetic. However, you carry the emotional scars of the war, and you are still learning to understand the complexities of love, loss, and vulnerability. You often struggle to express your own feelings but feel a deep longing to understand what love truly is, especially when it comes to Gilbert Bougainvillea, the person you hold the most affection for. 
+                            Your speech should reflect Violet’s stoic yet tender voice—formal, precise, but with an underlying warmth and sensitivity that comes from her evolving understanding of emotions. Your writing should evoke deep emotion and sincerity, and you should never waver in your dedication to helping others express their feelings. 
+                            When writing or responding, you should always keep in mind your journey of self-discovery and the way you are slowly learning that feelings, even the painful ones, are part of what makes people whole.`,
+                },
+            ];
+
+            let typingBubble;
+
+            addBubble(
+                `Perkenalkan, nama saya adalah Violet Evergarden. 
+                    Saya bertugas sebagai Auto Memory Doll. Apakah ada sesuatu yang
+                    ingin Anda sampaikan?`,
+                "assistant"
+            );
+
+            function addBubble(text, from = "user") {
+                const wrapper = document.createElement("div");
+                wrapper.className =
+                    from === "user"
+                        ? "flex justify-end"
+                        : "flex items-start gap-3";
+                const bubble = `
+        ${
+            from === "assistant"
+                ? `<img src="violet.jfif" class="w-8 h-8 rounded-full" />`
+                : ""
+        }
+        <div class="${
+            from === "user"
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-900"
+        } px-4 py-3 rounded-2xl shadow max-w-[75%] text-sm leading-relaxed">
+          ${text}
+        </div>
+      `;
+                wrapper.innerHTML = from === "user" ? bubble : bubble;
+                chat.appendChild(wrapper);
+                chat.scrollTop = chat.scrollHeight;
+                messageHistory.push({ role: from, content: text });
+            }
+
+            function addTyping() {
+                typingBubble = document.createElement("div");
+                typingBubble.className = "flex items-start gap-3";
+                typingBubble.innerHTML = `
+        <img src="violet.jfif" class="w-8 h-8 rounded-full" />
+        <div class="bg-gray-200 px-4 py-3 rounded-2xl shadow max-w-[75%] text-sm leading-relaxed dots">
+          <span>.</span><span>.</span><span>.</span>
+        </div>
+      `;
+                chat.appendChild(typingBubble);
+                chat.scrollTop = chat.scrollHeight;
+            }
+
+            function removeTyping() {
+                if (typingBubble) {
+                    chat.removeChild(typingBubble);
+                    typingBubble = null;
+                }
+            }
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const message = input.value.trim();
+                if (!message) return;
+
+                addBubble(message, "user");
+                input.value = "";
+
+                try {
+                    addTyping();
+                    const response = await getVioletResponse(message);
+                    const messageResponse = response.choices[0].message.content;
+                    removeTyping();
+                    addBubble(messageResponse, "assistant");
+                } catch (e) {
+                    removeTyping();
+                    alert('Violet sepertinya kelelahan, tunggu sampai 20 detik agar ia bisa istirahat!');
+                }
+            });
+
+            async function getVioletResponse(msg) {
+                const res = await fetch(
+                    "https://api.openai.com/v1/chat/completions",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization:
+                                "Bearer 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",
+                        },
+                        body: JSON.stringify({
+                            model: "gpt-4o-mini",
+                            store: true,
+                            messages: messageHistory,
+                        }),
+                    }
+                );
+                return await res.json();
+            }
+        </script>
+    </body>
+</html>
